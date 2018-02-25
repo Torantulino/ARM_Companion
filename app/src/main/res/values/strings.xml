@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">ARM</string>
+    <string name="action_outfit_save">Save Outfit</string>
+    <string name="action_outfit_purchase">Purchase Outfit</string>
+    <string name="action_user_outfits">My Outfits</string>
+    <string name="action_user_account">My Account</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_help">Help</string>
+    <string name="nav_more">More</string>
+    <string name="nav_back">Back</string>
+
+    <string name="title_designer">Designer</string>
+    <string name="title_hats">Hats</string>
+    <string name="title_jewelry">Jewelry</string>
+    <string name="title_glasses">Glasses</string>
+    <string name="title_headscarfs">Headscarfs</string>
+    <string name="title_head">Head</string>
+    <string name="title_neck">Neck</string>
+    <string name="title_torso">Torso</string>
+    <string name="title_hands">Hands</string>
+    <string name="title_waist">Waist</string>
+    <string name="title_legs">Legs</string>
+    <string name="title_feet">Feet</string>
+
+    <!-- Nav Draw -->
+    <string-array name="nav_draw_labels">
+        <!-- Main -->
+        <item>@string/action_outfit_save</item>
+        <item>@string/action_outfit_purchase</item>
+        <item>@string/action_user_outfits</item>
+        <item>@string/nav_more</item>
+        <!-- Additional -->
+        <item>@string/nav_back</item>
+        <item>@string/action_user_account</item>
+        <item>@string/action_help</item>
+        <item>@string/action_settings</item>
+    </string-array>
+
 </resources>

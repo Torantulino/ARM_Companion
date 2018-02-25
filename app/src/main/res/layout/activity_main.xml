@@ -6,30 +6,40 @@
     android:layout_height="match_parent"
     tools:context="significantgravitas.toran.armcompanion.MainActivity">
 
+
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
 
         <LinearLayout
+            android:id="@+id/titlebarContianer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/titlebar"
+                layout="@layout/titlebar" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/linLMain"
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="0.9"
+            android:layout_weight="0.8"
+            android:baselineAligned="false"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -58,7 +68,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_weight="0.2"
                     android:elevation="0dp"
-                    android:text="Head"
+                    android:text="@string/title_head"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -74,7 +84,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="0dp"
                     android:layout_weight="0.1"
-                    android:text="Neck"
+                    android:text="@string/title_neck"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintLeft_toLeftOf="@+id/btnHead"
                     app:layout_constraintRight_toRightOf="@+id/btnHead"
@@ -88,7 +98,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="0dp"
                     android:layout_weight="0.2"
-                    android:text="Torso"
+                    android:text="@string/title_torso"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintLeft_toLeftOf="@+id/btnNeck"
                     app:layout_constraintRight_toRightOf="@+id/btnNeck"
@@ -102,7 +112,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="0dp"
                     android:layout_weight="0.1"
-                    android:text="Hands"
+                    android:text="@string/title_hands"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintLeft_toLeftOf="@+id/btnTorso"
                     app:layout_constraintRight_toRightOf="@+id/btnTorso"
@@ -116,7 +126,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="0dp"
                     android:layout_weight="0.1"
-                    android:text="Waist"
+                    android:text="@string/title_waist"
                     android:visibility="visible"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="@+id/brnHands"
@@ -131,7 +141,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="0dp"
                     android:layout_weight="0.2"
-                    android:text="Legs"
+                    android:text="@string/title_legs"
                     app:layout_constraintLeft_toLeftOf="@+id/btnWaist"
                     app:layout_constraintRight_toRightOf="@+id/btnWaist"
                     app:layout_constraintTop_toBottomOf="@+id/btnWaist" />
@@ -144,7 +154,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="0dp"
                     android:layout_weight="0.1"
-                    android:text="Feet"
+                    android:text="@string/title_feet"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="@+id/btnLegs"
                     app:layout_constraintRight_toRightOf="@+id/btnLegs"
