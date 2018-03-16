@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_current_outfit"
+        android:icon="@drawable/mannequin_ico"
+        android:title="@string/nav_current_outfit"/>
+
+    <item
+        android:id="@+id/navigation_save_outfit"
+        android:icon="@drawable/heart_ico"
+        android:title="@string/nav_outfit_save"/>
+
+    <item
+        android:id="@+id/navigation_purchase_outfit"
+        android:icon="@drawable/tag_ico"
+        android:title="@string/nav_outfit_purchase"/>
+
+    <item
+        android:id="@+id/navigation_my_wardrobe"
+        android:icon="@drawable/wardrobe_ico"
+        android:title="@string/nav_user_wardrobe" />
+
+    <item
+        android:id="@+id/navigation_me"
+        android:icon="@drawable/user_ico"
+        android:title="@string/nav_user" />
+
+</menu>
