@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_current_outfit"
+        android:id="@+id/navigation_dress_up"
         android:icon="@drawable/mannequin_ico"
-        android:title="@string/nav_current_outfit"/>
+        android:title="@string/nav_dress_up"/>
 
     <item
         android:id="@+id/navigation_save_outfit"

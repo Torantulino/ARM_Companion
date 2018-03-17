@@ -184,8 +184,7 @@
             android:layout_height="0px"
             android:layout_weight="0.1"
             android:orientation="horizontal"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+            android:layout_margin="0px">
 
             <android.support.design.widget.BottomNavigationView
                 android:id="@+id/navigation"
@@ -197,7 +196,8 @@
                 android:foreground="?attr/selectableItemBackground"
                 app:itemIconTint="@android:color/white"
                 app:itemTextColor="@android:color/white"
-                app:menu="@menu/navigation" />
+                app:menu="@menu/navigation"
+                android:layout_margin="0px"/>
 
         </LinearLayout>
     </LinearLayout>
