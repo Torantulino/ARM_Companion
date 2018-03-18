@@ -13,15 +13,22 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.ActionBar;
 
+import java.util.HashMap;
+
 
 public class MainActivity extends AppCompatActivity implements  DressUpFragment.OnFragmentInteractionListener,
-                                                                SaveOutfitFragment.OnFragmentInteractionListener,
-                                                                PurchaseOutfitFragment.OnFragmentInteractionListener,
+                                                                GlassesFragment.OnFragmentInteractionListener,
+                                                                HeadFragment.OnFragmentInteractionListener,
+                                                                MeFragment.OnFragmentInteractionListener,
                                                                 MyWardrobeFragment.OnFragmentInteractionListener,
-                                                                MeFragment.OnFragmentInteractionListener{
+                                                                PurchaseOutfitFragment.OnFragmentInteractionListener,
+                                                                SaveOutfitFragment.OnFragmentInteractionListener
+                                                                {
 
     // Global Variables
     TextView mainTitle;
+    HashMap<Integer, Fragment> FragmentMap = new HashMap<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,23 +38,20 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        // Populate fragment map
+        populateFragMap();
         // - Load "Dress up" as startup page -
         // set title
         mainTitle = (TextView)findViewById(R.id.txtAppTitle);
         mainTitle.setText(R.string.nav_dress_up);
         // load fragment
         Fragment fragment = new DressUpFragment();
-        try {
-            loadFragment(fragment);
-        }
-        catch (Exception ex)
-        {
-        Log.e("FragLoadError", ex.getMessage());
-        }
+        loadFragment(fragment);
+
     }
 
 
-
+    // Bottom Nav Bar
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new
             BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -87,6 +91,40 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
 
     private void loadFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragHolder, fragment).commit();
+    }
+
+
+    private void populateFragMap(){
+        Fragment fragment;
+        // Dress up
+        fragment = new DressUpFragment();
+        FragmentMap.put(0, fragment);
+        // Glasses
+        fragment = new GlassesFragment();
+        FragmentMap.put(1, fragment);
+        // Head
+        fragment = new HeadFragment();
+        FragmentMap.put(2, fragment);
+        // Me
+        fragment = new MeFragment();
+        FragmentMap.put(3, fragment);
+        // My Wardrobe
+        fragment = new MyWardrobeFragment();
+        FragmentMap.put(4, fragment);
+        // Purchase Outfit
+        fragment = new PurchaseOutfitFragment();
+        FragmentMap.put(5, fragment);
+        // Save Outfit
+        fragment = new SaveOutfitFragment();
+        FragmentMap.put(6, fragment);
+
+    }
+
+
+    // Fragment by id for easier external switches
+    public void loadFragmentByID(int id) {
+        Fragment frag = FragmentMap.get(id);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragHolder, frag).commit();
     }
 
     @Override
