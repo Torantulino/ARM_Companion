@@ -98,7 +98,7 @@
                 android:layout_rowWeight="1">
 
                 <ImageButton
-                    android:id="@+id/button_2"
+                    android:id="@+id/btnGlasses"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:background="@null"
