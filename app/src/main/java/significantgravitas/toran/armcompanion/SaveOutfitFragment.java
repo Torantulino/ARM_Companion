@@ -58,15 +58,22 @@ public class SaveOutfitFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_save_outfit, container, false);
     }
 
+    public void populateCarousel(){
+
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -106,3 +113,4 @@ public class SaveOutfitFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 }
+

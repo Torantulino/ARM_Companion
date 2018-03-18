@@ -67,6 +67,7 @@
             android:layout_height="0px"
             android:layout_margin="0px"
             android:layout_weight="0.1"
+            android:layout_gravity="bottom"
             android:orientation="horizontal">
 
             <android.support.design.widget.BottomNavigationView
