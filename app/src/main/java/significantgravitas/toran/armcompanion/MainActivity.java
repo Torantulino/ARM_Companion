@@ -1,8 +1,20 @@
 package significantgravitas.toran.armcompanion;
 
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Message;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
@@ -12,7 +24,9 @@ import android.widget.TextView;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.ActionBar;
+import android.Manifest;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 
 
@@ -28,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
     // Global Variables
     TextView mainTitle;
     HashMap<Integer, Fragment> FragmentMap = new HashMap<>();
-
+    BluetoothAdapter defaultAdapter = BluetoothAdapter.getDefaultAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +145,118 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+    // Communication with ARM
+    public void connectToARM(){
+        //Check if Bluetooth permission is granted
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED){
+            // - Permission Not Granted/Revoked -
+            // Request permission
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_ADMIN}, 0);
+
+        }
+        else if(ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED){
+            // - Permission Not Granted/Revoked -
+            // Request permission
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH}, 1);
+        }
+        else if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // - Permission Not Granted/Revoked -
+            // Request permission
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 2);
+        }
+        else{
+            // - Permission Granted -
+            // Make User Device discoverable
+            makeDeviceDiscoverable();
+
+        }
+    }
+
+    // Override onRequestPermissionResult to receive user decision
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults){
+        switch (requestCode){
+            //BLUETOOTH_ADMIN
+            case 0: {
+                //If request was canceled rather than acted on, results length will be 0
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    //Permission Granted, Recall connectToARM
+                    connectToARM();
+                }
+                else{
+                    //Permission denied.
+                    //TODO: Inform user that app required permission to function, exit app if refused to reconsider permission.
+                }
+                return;
+            }
+            //BLUETOOTH
+            case 1: {
+                //If request was canceled rather than acted on, results length will be 0
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    //Permission Granted, Recall connectToARM
+                    connectToARM();
+                }
+                else{
+                    //Permission denied.
+                    //TODO: Inform user that app required permission to function, exit app if refused to reconsider permission.
+                }
+                return;
+            }
+            //ACCESS COARSE LOCATION
+            case 2: {
+                //If request was canceled rather than acted on, results will be 0
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    //Permission Granted, Recall connectToARM
+                    connectToARM();
+                }
+                else{
+                    //Permission denied.
+                    //TODO: Inform user that app required permission to function, exit app if refused to reconsider permission.
+                }
+                return;
+            }
+        }
+    }
+
+    // Make device discoverable
+    private void makeDeviceDiscoverable(){
+        Intent intentMakeDiscoverable = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+        intentMakeDiscoverable.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+        startActivity(intentMakeDiscoverable);
+    }
+
+    // Create Broadcast Receiver
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver(){
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Message message = Message.obtain();
+            String action = intent.getAction();
+            if(BluetoothDevice.ACTION_FOUND.equals(action)){
+                // Device Found
+
+            }
+        }
+
+    };
+
+    // Search for bluetooth devices and send them to broadcastReceiver
+    private void blueSearch() {
+        IntentFilter intentFoundDevice = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+        MainActivity.this.registerReceiver(broadcastReceiver, intentFoundDevice);
+        defaultAdapter.startDiscovery();
+    }
+
+    // Bond with specified device
+    public boolean bond(BluetoothDevice bluetoothDevice)
+        throws Exception
+        {
+            Class class1 = Class.forName("android.bluetooth.BluetoothDevice");
+            Method bondMethod = class1.getMethod("bond");
+            Boolean returnValue = (Boolean) bondMethod.invoke(bluetoothDevice);
+            return returnValue.booleanValue();
+        }
+
     /*
     private void loadFragment(Fragment fragment) {
         // load fragment
