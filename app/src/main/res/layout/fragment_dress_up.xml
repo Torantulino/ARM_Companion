@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="significantgravitas.toran.armcompanion.DressUpFragment">
+
+    <LinearLayout
+        android:id="@+id/linLDressUp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <LinearLayout
+            android:id="@+id/linLSelector"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0px"
+            android:layout_marginTop="0px"
+            android:layout_weight="0.3"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnHead"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="0dp"
+                android:layout_weight="0.2"
+                android:elevation="0dp"
+                android:text="@string/title_head"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/btnNeck"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="0dp"
+                android:layout_weight="0.1"
+                android:text="@string/title_neck"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="@+id/btnHead"
+                app:layout_constraintRight_toRightOf="@+id/btnHead"
+                app:layout_constraintTop_toBottomOf="@+id/btnHead" />
+
+            <Button
+                android:id="@+id/btnTorso"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="0dp"
+                android:layout_weight="0.2"
+                android:text="@string/title_torso"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="@+id/btnNeck"
+                app:layout_constraintRight_toRightOf="@+id/btnNeck"
+                app:layout_constraintTop_toBottomOf="@+id/btnNeck" />
+
+            <Button
+                android:id="@+id/brnHands"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="0dp"
+                android:layout_weight="0.1"
+                android:text="@string/title_hands"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="@+id/btnTorso"
+                app:layout_constraintRight_toRightOf="@+id/btnTorso"
+                app:layout_constraintTop_toBottomOf="@+id/btnTorso" />
+
+            <Button
+                android:id="@+id/btnWaist"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="0dp"
+                android:layout_weight="0.1"
+                android:text="@string/title_waist"
+                android:visibility="visible"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="@+id/brnHands"
+                app:layout_constraintRight_toRightOf="@+id/brnHands"
+                app:layout_constraintTop_toBottomOf="@+id/brnHands" />
+
+            <Button
+                android:id="@+id/btnLegs"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="0dp"
+                android:layout_weight="0.2"
+                android:text="@string/title_legs"
+                app:layout_constraintLeft_toLeftOf="@+id/btnWaist"
+                app:layout_constraintRight_toRightOf="@+id/btnWaist"
+                app:layout_constraintTop_toBottomOf="@+id/btnWaist" />
+
+            <Button
+                android:id="@+id/btnFeet"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="0dp"
+                android:layout_weight="0.1"
+                android:text="@string/title_feet"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="@+id/btnLegs"
+                app:layout_constraintRight_toRightOf="@+id/btnLegs"
+                app:layout_constraintTop_toBottomOf="@+id/btnLegs" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linLHuman"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/silhouette" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

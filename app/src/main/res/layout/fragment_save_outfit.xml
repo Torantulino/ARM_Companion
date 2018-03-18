@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="significantgravitas.toran.armcompanion.DressUpFragment">
+
+
+    <LinearLayout
+        android:id="@+id/linLSaveHeader"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <LinearLayout
+            android:layout_width="106dp"
+            android:layout_height="139dp"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp">
+
+            <EditText
+                android:id="@+id/eTxtOutfitName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/txtSaveOutfitName"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/txtSaveOutfitName"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/txtSaveOutfitName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/eTxtOutfitName"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="start"
+                android:text="Name Outfit"
+                android:textAlignment="textStart"
+                android:textSize="24sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLSaveHead"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="1"
+        app:layout_constraintBottom_toTopOf="@+id/linLSaveNeck"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linLSaveHeader"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <TextView
+            android:id="@+id/txtSaveHead"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:text="Head:"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/eTxtSelectedHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="SELECTED ITEMS" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLSaveNeck"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="1"
+        app:layout_constraintBottom_toTopOf="@+id/linLSaveTorso"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1">
+
+        <TextView
+            android:id="@+id/txtSaveNeck"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:text="Neck:"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/eTxtSelectedNeck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="SELECTED ITEMS" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLSaveHands"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/linLSaveWaist"
+        app:layout_constraintLeft_toLeftOf="@+id/linLSaveTorso"
+        app:layout_constraintRight_toRightOf="@+id/linLSaveTorso"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1">
+
+        <TextView
+            android:id="@+id/txtSaveHands"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:text="Hands:"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/eTxtSelectedHands"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="SELECTED ITEMS" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLSaveWaist"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/linLSaveLegs"
+        app:layout_constraintLeft_toLeftOf="@+id/linLSaveHands"
+        app:layout_constraintRight_toRightOf="@+id/linLSaveHands"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1">
+
+        <TextView
+            android:id="@+id/txtSaveWaist"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:text="Waist:"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/eTxtSelectedWaist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="SELECTED ITEMS" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLSaveLegs"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/linLSaveFeet"
+        app:layout_constraintLeft_toLeftOf="@+id/linLSaveWaist"
+        app:layout_constraintRight_toRightOf="@+id/linLSaveWaist"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1">
+
+        <TextView
+            android:id="@+id/txtSaveLegs"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:text="Legs:"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/eTxtSelectedLegs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="SELECTED ITEMS" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLSaveFeet"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/linLSaveLegs"
+        app:layout_constraintRight_toRightOf="@+id/linLSaveLegs"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1">
+
+        <TextView
+            android:id="@+id/txtSaveFeet"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:text="Feet:"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/eTxtSelectedFeet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="SELECTED ITEMS" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLSaveTorso"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/linLSaveHands"
+        app:layout_constraintLeft_toLeftOf="@+id/linLSaveNeck"
+        app:layout_constraintRight_toRightOf="@+id/linLSaveNeck"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1">
+
+        <TextView
+            android:id="@+id/txtSaveTorso"
+            android:layout_width="46dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_weight="0.10"
+            android:text="Torso:"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/eTxtSelectedTorso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="SELECTED ITEMS" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:fontFamily="casual"
+        android:text="Save Outfit"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1" />
+<!--
+   <android.support.v7.widget.RecyclerView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/colorPrimaryDark"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
+-->
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="368dp"
+        android:layout_height="255dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="4dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="137dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/silhouette" />
+
+    </android.support.v7.widget.CardView>
+
+
+</android.support.constraint.ConstraintLayout>

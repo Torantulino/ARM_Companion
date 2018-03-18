@@ -3,14 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="0px"
     tools:context="significantgravitas.toran.armcompanion.MainActivity">
 
 
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="fill_parent"
+        android:layout_margin="0px"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -34,6 +36,7 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:id="@+id/linLMain"
             android:layout_width="match_parent"
@@ -50,154 +53,34 @@
             tools:layout_constraintRight_creator="1"
             tools:layout_constraintTop_creator="1">
 
-            <LinearLayout
-                android:id="@+id/linLSelector"
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="0px"
-                android:layout_marginTop="0px"
-                android:layout_weight="0.3"
-                android:orientation="vertical">
+            <FrameLayout
+                android:id="@+id/fragHolder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/btnHead"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_weight="0.2"
-                    android:elevation="0dp"
-                    android:text="@string/title_head"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <Button
-                    android:id="@+id/btnNeck"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_weight="0.1"
-                    android:text="@string/title_neck"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintLeft_toLeftOf="@+id/btnHead"
-                    app:layout_constraintRight_toRightOf="@+id/btnHead"
-                    app:layout_constraintTop_toBottomOf="@+id/btnHead" />
-
-                <Button
-                    android:id="@+id/btnTorso"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_weight="0.2"
-                    android:text="@string/title_torso"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintLeft_toLeftOf="@+id/btnNeck"
-                    app:layout_constraintRight_toRightOf="@+id/btnNeck"
-                    app:layout_constraintTop_toBottomOf="@+id/btnNeck" />
-
-                <Button
-                    android:id="@+id/brnHands"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_weight="0.1"
-                    android:text="@string/title_hands"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintLeft_toLeftOf="@+id/btnTorso"
-                    app:layout_constraintRight_toRightOf="@+id/btnTorso"
-                    app:layout_constraintTop_toBottomOf="@+id/btnTorso" />
-
-                <Button
-                    android:id="@+id/btnWaist"
-                    android:layout_width="match_parent"
-                    android:layout_height="0px"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_weight="0.1"
-                    android:text="@string/title_waist"
-                    android:visibility="visible"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintLeft_toLeftOf="@+id/brnHands"
-                    app:layout_constraintRight_toRightOf="@+id/brnHands"
-                    app:layout_constraintTop_toBottomOf="@+id/brnHands" />
-
-                <Button
-                    android:id="@+id/btnLegs"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_weight="0.2"
-                    android:text="@string/title_legs"
-                    app:layout_constraintLeft_toLeftOf="@+id/btnWaist"
-                    app:layout_constraintRight_toRightOf="@+id/btnWaist"
-                    app:layout_constraintTop_toBottomOf="@+id/btnWaist" />
-
-                <Button
-                    android:id="@+id/btnFeet"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_weight="0.1"
-                    android:text="@string/title_feet"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintLeft_toLeftOf="@+id/btnLegs"
-                    app:layout_constraintRight_toRightOf="@+id/btnLegs"
-                    app:layout_constraintTop_toBottomOf="@+id/btnLegs" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linLHuman"
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="0.7"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/silhouette" />
-            </LinearLayout>
-
+            </FrameLayout>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linLNav"
             android:layout_width="match_parent"
             android:layout_height="0px"
+            android:layout_margin="0px"
             android:layout_weight="0.1"
-            android:orientation="horizontal"
-            android:layout_margin="0px">
+            android:orientation="horizontal">
 
             <android.support.design.widget.BottomNavigationView
                 android:id="@+id/navigation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:layout_margin="0px"
                 android:background="?android:attr/windowBackground"
-                app:itemBackground="@color/navigationBarColor"
                 android:foreground="?attr/selectableItemBackground"
+                app:itemBackground="@color/navigationBarColor"
                 app:itemIconTint="@android:color/white"
                 app:itemTextColor="@android:color/white"
-                app:menu="@menu/navigation"
-                android:layout_margin="0px"/>
+                app:menu="@menu/navigation" />
 
         </LinearLayout>
     </LinearLayout>
