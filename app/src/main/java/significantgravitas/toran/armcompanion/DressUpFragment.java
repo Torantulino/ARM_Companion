@@ -72,7 +72,7 @@ public class DressUpFragment extends Fragment {
             @Override
             public void onClick(View thisView) {
                 // Load Head Fragment, ID:2
-                ((MainActivity)getActivity()).loadDressupSessionFragment(2);
+                ((MainActivity)getActivity()).loadChildFragment(2, R.id.linLDressUp);
             }
         });
         // Inflate the layout for this fragment

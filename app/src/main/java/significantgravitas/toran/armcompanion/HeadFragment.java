@@ -72,7 +72,7 @@ public class HeadFragment extends Fragment {
             @Override
             public void onClick(View thisView) {
                 // Load Glasses Fragment, ID:1
-                ((MainActivity)getActivity()).loadFragmentByID(1);
+                ((MainActivity)getActivity()).loadChildFragment(1, R.id.linLDressUp);
             }
         });
 

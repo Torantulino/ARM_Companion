@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
@@ -177,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
 
     Fragment lastDressUpFrag;
 
-    public void loadDressupSessionFragment(int id){
+    public void loadChildFragment(int id, int targetID){
         Fragment frag = FragmentMap.get(id);
         Log.v("LOG-TAG","- Begin Loading fragment by ID into DressUp Slot. -");
         if (lastDressUpFrag != frag) {
@@ -202,7 +203,8 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
                 //Fragment not yet created: create and switch
                 Log.v("LOG-TAG", "Fragment not yet created, adding to fragment manager.");
                 FragmentTransaction trans = lastFragment.getChildFragmentManager().beginTransaction();
-                trans.add(R.id.linLDressUp, frag);
+
+                trans.add(targetID, frag);
                 trans.commit();
                 Log.v("LOG-TAG","Fragment Added!");
             }
