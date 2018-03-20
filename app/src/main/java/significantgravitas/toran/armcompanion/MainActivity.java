@@ -141,45 +141,79 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
     // Fragment by id for easier external switches
     public void loadFragmentByID(int id) {
         Fragment frag = FragmentMap.get(id);
-        // TODO: IF lastFRAG != frag - Prevent switching to the same fragment.
-        Log.v("LOG-TAG","Loading fragment by ID");
-        // If last fragment isn't null:
-        if(lastFragment != null) {
-            Log.v("LOG-TAG","Detaching current fragment.");
-            //Detach Current Fragment:
-            FragmentTransaction fTrans = getSupportFragmentManager().beginTransaction();
-            fTrans.detach(getSupportFragmentManager().findFragmentById(lastFragment.getId()));
-            fTrans.commit();
+        // If lastFRAG != frag - Prevent switching to the same fragment.
+        if (lastFragment != frag) {
+            Log.v("LOG-TAG","- Begin Loading fragment by ID into Main Slot -");
+            // If last fragment isn't null:
+            if(lastFragment != null) {
+                Log.v("LOG-TAG","Detaching current fragment.");
+                //Detach Current Fragment:
+                FragmentTransaction fTrans = getSupportFragmentManager().beginTransaction();
+                fTrans.detach(getSupportFragmentManager().findFragmentById(lastFragment.getId()));
+                fTrans.commit();
+            }
+            //Check if fragment has already been created:
+            if (getSupportFragmentManager().findFragmentById(frag.getId()) != null){
+                //Fragment already created: switch
+                Log.v("LOG-TAG", "Fragment already created, switching!");
+                FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+                trans.attach(frag);
+                trans.commit();
+                Log.v("LOG-TAG","Switch Complete!");
+            }
+            else{
+                //Fragment not yet created: create and switch
+                Log.v("LOG-TAG", "Fragment not yet created, adding to fragment manager.");
+                FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+                trans.add(R.id.fragHolder, frag);
+                trans.commit();
+                Log.v("LOG-TAG","Fragment Added!");
+            }
+            lastFragment = frag;
+        } else {
+            Log.v("LOG-TAG","Same fragment, not switching.");
         }
-        //Check if fragment has already been created:
-        if (getSupportFragmentManager().findFragmentById(frag.getId()) != null){
-            //Fragment already created: switch
-            Log.v("LOG-TAG", "Fragment already created, switching!");
-            FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.attach(frag);
-            trans.commit();
-            Log.v("LOG-TAG","Switch Complete!");
-        }
-        else{
-            //Fragment not yet created: create and switch
-            Log.v("LOG-TAG", "Fragment not yet created, adding to fragment manager.");
-            FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.add(R.id.fragHolder, frag);
-            trans.commit();
-            Log.v("LOG-TAG","Fragment Added!");
-        }
-        //getSupportFragmentManager().beginTransaction().replace(R.id.fragHolder, frag).commit();
-        lastFragment = frag;
     }
+
+    Fragment lastDressUpFrag;
 
     public void loadDressupSessionFragment(int id){
         Fragment frag = FragmentMap.get(id);
-        getSupportFragmentManager().beginTransaction().replace(R.id.linLDressUp, frag).commit();
+        Log.v("LOG-TAG","- Begin Loading fragment by ID into DressUp Slot. -");
+        if (lastDressUpFrag != frag) {
+            // If last fragment isn't null:
+            if(lastDressUpFrag != null) {
+                Log.v("LOG-TAG","Detaching current fragment.");
+                //Detach Current Fragment:
+                FragmentTransaction fTrans = lastFragment.getChildFragmentManager().beginTransaction();
+                fTrans.detach(lastFragment.getChildFragmentManager().findFragmentById(lastDressUpFrag.getId()));
+                fTrans.commit();
+            }
+            //Check if fragment has already been created:
+            if (lastFragment.getChildFragmentManager().findFragmentById(frag.getId()) != null){
+                //Fragment already created: switch
+                Log.v("LOG-TAG", "Fragment already created, switching!");
+                FragmentTransaction trans = lastFragment.getChildFragmentManager().beginTransaction();
+                trans.attach(frag);
+                trans.commit();
+                Log.v("LOG-TAG","Switch Complete!");
+            }
+            else{
+                //Fragment not yet created: create and switch
+                Log.v("LOG-TAG", "Fragment not yet created, adding to fragment manager.");
+                FragmentTransaction trans = lastFragment.getChildFragmentManager().beginTransaction();
+                trans.add(R.id.linLDressUp, frag);
+                trans.commit();
+                Log.v("LOG-TAG","Fragment Added!");
+            }
+            lastDressUpFrag = frag;
+        } else {
+            Log.v("LOG-TAG","Same fragment, not switching.");
+        }
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
     }
 
     // Communication with ARM
