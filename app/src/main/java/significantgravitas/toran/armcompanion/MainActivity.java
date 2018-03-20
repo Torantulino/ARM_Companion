@@ -28,6 +28,7 @@ import android.Manifest;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.Set;
 
 
 public class MainActivity extends AppCompatActivity implements  DressUpFragment.OnFragmentInteractionListener,
@@ -37,12 +38,13 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
                                                                 MyWardrobeFragment.OnFragmentInteractionListener,
                                                                 PurchaseOutfitFragment.OnFragmentInteractionListener,
                                                                 SaveOutfitFragment.OnFragmentInteractionListener
-                                                                {
+{
 
     // Global Variables
     TextView mainTitle;
     HashMap<Integer, Fragment> FragmentMap = new HashMap<>();
-    BluetoothAdapter defaultAdapter = BluetoothAdapter.getDefaultAdapter();
+    BluetoothAdapter defaultAdapter = BluetoothAdapter.getDefaultAdapter(); //TODO: LATER VERSIONS: CHECK IF DEVICE SUPPORTS BLUETOOTH AND TAKE ACTION ACCORDINGLY
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +61,10 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
         mainTitle = (TextView)findViewById(R.id.txtAppTitle);
         mainTitle.setText(R.string.nav_dress_up);
         // load fragment
-        Fragment fragment = new DressUpFragment();
-        loadFragment(fragment);
-
+        //Fragment fragment = new DressUpFragment();
+        loadFragmentByID(0);
+        // Connect to ARM
+        connectToARM();
     }
 
 
@@ -77,15 +80,15 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
                             // Set title
                             mainTitle.setText(R.string.nav_dress_up);
                             // Load fragment
-                            mainFragment = new DressUpFragment();
-                            loadFragment(mainFragment);
+                            //mainFragment = new DressUpFragment();
+                            loadFragmentByID(0);
                             return true;
                         case R.id.navigation_save_outfit:
                             // Set title
                             mainTitle.setText(R.string.nav_outfit_save);
                             // Load fragment
-                            mainFragment = new SaveOutfitFragment();
-                            loadFragment(mainFragment);
+                           // mainFragment = new SaveOutfitFragment();
+                            loadFragmentByID(6);
                             return true;
                         case R.id.navigation_purchase_outfit:
                             mainTitle.setText(R.string.nav_outfit_purchase);
@@ -102,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
             };
 
 
-
+    //TODO: Remove in favor of loadFragmentByID()
     private void loadFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragHolder, fragment).commit();
     }
@@ -134,11 +137,44 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
 
     }
 
-
+    Fragment lastFragment;
     // Fragment by id for easier external switches
     public void loadFragmentByID(int id) {
         Fragment frag = FragmentMap.get(id);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragHolder, frag).commit();
+        // TODO: IF lastFRAG != frag - Prevent switching to the same fragment.
+        Log.v("LOG-TAG","Loading fragment by ID");
+        // If last fragment isn't null:
+        if(lastFragment != null) {
+            Log.v("LOG-TAG","Detaching current fragment.");
+            //Detach Current Fragment:
+            FragmentTransaction fTrans = getSupportFragmentManager().beginTransaction();
+            fTrans.detach(getSupportFragmentManager().findFragmentById(lastFragment.getId()));
+            fTrans.commit();
+        }
+        //Check if fragment has already been created:
+        if (getSupportFragmentManager().findFragmentById(frag.getId()) != null){
+            //Fragment already created: switch
+            Log.v("LOG-TAG", "Fragment already created, switching!");
+            FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            trans.attach(frag);
+            trans.commit();
+            Log.v("LOG-TAG","Switch Complete!");
+        }
+        else{
+            //Fragment not yet created: create and switch
+            Log.v("LOG-TAG", "Fragment not yet created, adding to fragment manager.");
+            FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            trans.add(R.id.fragHolder, frag);
+            trans.commit();
+            Log.v("LOG-TAG","Fragment Added!");
+        }
+        //getSupportFragmentManager().beginTransaction().replace(R.id.fragHolder, frag).commit();
+        lastFragment = frag;
+    }
+
+    public void loadDressupSessionFragment(int id){
+        Fragment frag = FragmentMap.get(id);
+        getSupportFragmentManager().beginTransaction().replace(R.id.linLDressUp, frag).commit();
     }
 
     @Override
@@ -148,28 +184,36 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
 
     // Communication with ARM
     public void connectToARM(){
-        //Check if Bluetooth permission is granted
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED){
-            // - Permission Not Granted/Revoked -
-            // Request permission
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_ADMIN}, 0);
+        //Get all permissions
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            //Check if Bluetooth permission is granted
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED){
+                // - Permission Not Granted/Revoked -
+                // Request permission
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_ADMIN}, 0);
 
-        }
-        else if(ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED){
-            // - Permission Not Granted/Revoked -
-            // Request permission
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH}, 1);
-        }
-        else if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // - Permission Not Granted/Revoked -
-            // Request permission
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 2);
+            }
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED){
+                // - Permission Not Granted/Revoked -
+                // Request permission
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH}, 1);
+            }
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // - Permission Not Granted/Revoked -
+                // Request permission
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 2);
+            }
+            //Retry
+            connectToARM();
         }
         else{
             // - Permission Granted -
             // Make User Device discoverable
             makeDeviceDiscoverable();
-
+            // Start Searching for devices
+            blueSearch();
         }
     }
 
@@ -230,11 +274,24 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver(){
         @Override
         public void onReceive(Context context, Intent intent) {
-            Message message = Message.obtain();
             String action = intent.getAction();
             if(BluetoothDevice.ACTION_FOUND.equals(action)){
                 // Device Found
-
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                if(device.getName().equals("ARMDevice")){
+                    // ARM FOUND
+                    Log.v("LOG-TAG", "ARM Device found! (Main Activity, Broadcast Receiver).");
+                    //Start Bluetooth Connection Thread
+                    BlueConnectThread blueConnectThread = new BlueConnectThread(device);
+                    blueConnectThread.start();
+                }
+                else{
+                    Log.v("LOG-TAG", "Device found that does not match name ARMDevice Called:" + device.getName());
+                }
+                //foundDevices.add(device);
+            }
+            else{
+                Log.e("ERROR-TAG", "Action != intent.getAction (Main Activity, Broadcast Receiver).");
             }
         }
 
@@ -243,10 +300,10 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
     // Search for bluetooth devices and send them to broadcastReceiver
     private void blueSearch() {
         IntentFilter intentFoundDevice = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-        MainActivity.this.registerReceiver(broadcastReceiver, intentFoundDevice);
+        registerReceiver(broadcastReceiver, intentFoundDevice);
         defaultAdapter.startDiscovery();
     }
-
+/*
     // Bond with specified device
     public boolean bond(BluetoothDevice bluetoothDevice)
         throws Exception
@@ -256,7 +313,7 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
             Boolean returnValue = (Boolean) bondMethod.invoke(bluetoothDevice);
             return returnValue.booleanValue();
         }
-
+*/
     /*
     private void loadFragment(Fragment fragment) {
         // load fragment
