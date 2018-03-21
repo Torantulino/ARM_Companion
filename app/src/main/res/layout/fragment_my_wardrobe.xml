@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="0.5"
-            android:background="@color/colorPrimary"
+            android:background="@color/textColorPrimary"
             android:fontFamily="casual"
             android:text="My Outfits"
             android:textSize="18sp" />
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="0.5"
-            android:background="@color/textColorPrimary"
+            android:background="@color/colorPrimary"
             android:fontFamily="casual"
             android:text="My Wardrobe"
             android:textSize="18sp" />
