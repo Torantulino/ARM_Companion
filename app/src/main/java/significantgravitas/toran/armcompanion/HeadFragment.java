@@ -73,6 +73,7 @@ public class HeadFragment extends Fragment {
             public void onClick(View thisView) {
                 // Load Glasses Fragment, ID:1
                 ((MainActivity)getActivity()).loadChildFragment(1, R.id.linLDressUp);
+
             }
         });
 

@@ -28,8 +28,11 @@ import android.support.v7.app.ActionBar;
 import android.Manifest;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
+import java.util.Stack;
 
 
 public class MainActivity extends AppCompatActivity implements  DressUpFragment.OnFragmentInteractionListener,
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
     TextView mainTitle;
     HashMap<Integer, Fragment> FragmentMap = new HashMap<>();
     BluetoothAdapter defaultAdapter = BluetoothAdapter.getDefaultAdapter(); //TODO: LATER VERSIONS: CHECK IF DEVICE SUPPORTS BLUETOOTH AND TAKE ACTION ACCORDINGLY
+    Stack dressUpStack = new Stack();
 
 
     @Override
@@ -106,11 +110,6 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
             };
 
 
-    //TODO: Remove in favor of loadFragmentByID()
-    private void loadFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragHolder, fragment).commit();
-    }
-
 
     private void populateFragMap(){
         Fragment fragment;
@@ -136,6 +135,18 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
         fragment = new SaveOutfitFragment();
         FragmentMap.put(6, fragment);
 
+    }
+
+    Fragment getAssignedParentByID(int childID){
+        if (childID == 0 || (childID >=3 && childID <= 6)){
+            Log.v("LOG-TAG", "Fragment is an orphan.");
+            return null;
+        }
+        if (childID == 1 || childID == 2){
+            return FragmentMap.get(0);
+        }
+        Log.v("LOG-TAG", "Fragment is Unregistered!!.");
+        return null;
     }
 
     Fragment lastFragment;
@@ -176,18 +187,30 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
         }
     }
 
-    Fragment lastDressUpFrag;
+    List<Integer> lastChildren = new ArrayList<>();
 
     public void loadChildFragment(int id, int targetID){
         Fragment frag = FragmentMap.get(id);
-        Log.v("LOG-TAG","- Begin Loading fragment by ID into DressUp Slot. -");
-        if (lastDressUpFrag != frag) {
+        Fragment lastChildFrag = null;
+        //Find last child for this parent Fragment
+        for (int child: lastChildren)
+        {
+            // If of the same parent
+            if(getAssignedParentByID(child) == getAssignedParentByID(id)){
+                lastChildFrag = FragmentMap.get(child);
+            }
+            else{
+                Log.v("LOG-TAG","CURRENT FRAGMENT PARENT: " + getAssignedParentByID(id) + ", PAST FRAGMENT PARENT: " + getAssignedParentByID(child));
+            }
+        }
+        Log.v("LOG-TAG","- Begin Loading fragment by ID into Parent Slot. -");
+        if (lastChildFrag != frag) {
             // If last fragment isn't null:
-            if(lastDressUpFrag != null) {
+            if(lastChildFrag != null) {                                                             
                 Log.v("LOG-TAG","Detaching current fragment.");
                 //Detach Current Fragment:
                 FragmentTransaction fTrans = lastFragment.getChildFragmentManager().beginTransaction();
-                fTrans.detach(lastFragment.getChildFragmentManager().findFragmentById(lastDressUpFrag.getId()));
+                fTrans.detach(lastFragment.getChildFragmentManager().findFragmentById(lastChildFrag.getId()));
                 fTrans.commit();
             }
             //Check if fragment has already been created:
@@ -208,7 +231,11 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
                 trans.commit();
                 Log.v("LOG-TAG","Fragment Added!");
             }
-            lastDressUpFrag = frag;
+            // Update last child
+            if(lastChildFrag != null) {
+                lastChildren.remove(lastChildFrag);
+            }
+            lastChildren.add(id);
         } else {
             Log.v("LOG-TAG","Same fragment, not switching.");
         }
