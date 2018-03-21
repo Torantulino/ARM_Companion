@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toolbar;
 
 
 /**
@@ -62,17 +63,18 @@ public class DressUpFragment extends Fragment {
         }
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View thisView = inflater.inflate(R.layout.fragment_dress_up, container, false);
-
         Button headBtn = (Button) thisView.findViewById(R.id.btnHead);
         headBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View thisView) {
                 // Load Head Fragment, ID:2
-                ((MainActivity)getActivity()).loadChildFragment(2, R.id.linLDressUp);
+                ((MainActivity)getActivity()).loadChildFragment(2, R.id.linLDressUp, false);
             }
         });
         // Inflate the layout for this fragment

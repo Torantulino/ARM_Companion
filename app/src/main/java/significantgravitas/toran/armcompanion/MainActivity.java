@@ -31,6 +31,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.Stack;
 
@@ -137,16 +139,16 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
 
     }
 
-    Fragment getAssignedParentByID(int childID){
+    int getAssignedParentByID(int childID){
         if (childID == 0 || (childID >=3 && childID <= 6)){
-            Log.v("LOG-TAG", "Fragment is an orphan.");
-            return null;
+            Log.v("LOG-TAG", "Fragment " + childID + " is an orphan.");
+            return -1;
         }
         if (childID == 1 || childID == 2){
-            return FragmentMap.get(0);
+            return 0;
         }
         Log.v("LOG-TAG", "Fragment is Unregistered!!.");
-        return null;
+        return -1;
     }
 
     Fragment lastFragment;
@@ -187,12 +189,57 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
         }
     }
 
+    private void addToHistory(int id){
+        //Child of DressUpFragment
+        if(getAssignedParentByID(id) == 0){
+            dressUpStack.push(id);
+        }
+        //TODO: ADD REST OF PARENTS
+    }
+
+    private int getIDFromFrag(Fragment frag){
+        for (Map.Entry<Integer, Fragment> entry : FragmentMap.entrySet())
+        {
+            if(frag == entry.getValue()){
+                return entry.getKey();
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public void onBackPressed(){
+        int fragID = getIDFromFrag(lastFragment);
+
+        if(fragID == 0){
+            if (!dressUpStack.empty()){
+                loadChildFragment((int)dressUpStack.pop(), R.id.linLDressUp, true);
+            }
+            //Else if stack is empty load main fragment
+            else {
+                Fragment lastChild = null;
+                for (int child: lastChildren)
+                {
+                    // If of the same parent
+                    if(getAssignedParentByID(child) == fragID){
+                        lastChild = FragmentMap.get(child);
+                    }
+                }
+                if(lastChild!=null){
+                    lastFragment.getChildFragmentManager().beginTransaction().remove(lastFragment.getChildFragmentManager().findFragmentById(R.id.linLDressUp)).commit();
+                    lastChildren.remove((Integer)getIDFromFrag(lastChild));
+                }
+            }
+        }
+        //TODO: ADD FOR OTHER PARENTS
+    }
+
     List<Integer> lastChildren = new ArrayList<>();
 
-    public void loadChildFragment(int id, int targetID){
+    public void loadChildFragment(int id, int targetID, boolean backAction){
         Fragment frag = FragmentMap.get(id);
         Fragment lastChildFrag = null;
-        //Find last child for this parent Fragment
+        // Find last child for this parent Fragment
         for (int child: lastChildren)
         {
             // If of the same parent
@@ -226,17 +273,25 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
                 //Fragment not yet created: create and switch
                 Log.v("LOG-TAG", "Fragment not yet created, adding to fragment manager.");
                 FragmentTransaction trans = lastFragment.getChildFragmentManager().beginTransaction();
-
                 trans.add(targetID, frag);
                 trans.commit();
                 Log.v("LOG-TAG","Fragment Added!");
             }
+            Log.v("LOG-TAG","LastChildFrag = " + lastChildFrag);
+            // If not a back action, add to history
+            if(!backAction) {
+                // Add child to appropriate history stack
+                addToHistory(getIDFromFrag(lastChildFrag));
+            }
             // Update last child
             if(lastChildFrag != null) {
-                lastChildren.remove(lastChildFrag);
+                Log.v("LOG-TAG","Attempting to remove child: " + getIDFromFrag(lastChildFrag));
+                lastChildren.remove((Integer)getIDFromFrag(lastChildFrag));
+                Log.v("LOG-TAG","Child Removed.");
             }
             lastChildren.add(id);
-        } else {
+        }
+        else {
             Log.v("LOG-TAG","Same fragment, not switching.");
         }
     }
