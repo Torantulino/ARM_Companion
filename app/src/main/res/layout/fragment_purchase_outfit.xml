@@ -1,13 +1,195 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="significantgravitas.toran.armcompanion.PurchaseOutfitFragment">
+    tools:context="significantgravitas.toran.armcompanion.DressUpFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/txtVAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="37dp"
+                android:layout_marginStart="37dp"
+                android:text="Address :"
+                android:textSize="18sp"
+                android:layout_alignBaseline="@+id/tvtVChosenPay"
+                android:layout_alignBottom="@+id/tvtVChosenPay"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/tvtVChosenPay"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="33dp"
+                android:layout_marginRight="33dp"
+                android:layout_marginTop="25dp"
+                android:text="My House"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/tvtVChosenPay"
+                android:layout_alignLeft="@+id/tvtVChosenPay"
+                android:layout_alignRight="@+id/tvtVChosenPay"
+                android:layout_alignStart="@+id/tvtVChosenPay"
+                android:layout_below="@+id/tvtVChosenPay"
+                android:layout_marginTop="23dp"
+                android:fontFamily="casual"
+                android:text="Change" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
+            android:background="@color/textColorPrimary">
+
+            <TextView
+                android:id="@+id/txtVPay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvtVChosenPay"
+                android:layout_alignBottom="@+id/tvtVChosenPay"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="37dp"
+                android:layout_marginStart="37dp"
+                android:text="Payment Method:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvtVChosenPay"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="33dp"
+                android:layout_marginRight="33dp"
+                android:layout_marginTop="25dp"
+                android:text="Default"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/tvtVChosenPay"
+                android:layout_alignLeft="@+id/tvtVChosenPay"
+                android:layout_alignRight="@+id/tvtVChosenPay"
+                android:layout_alignStart="@+id/tvtVChosenPay"
+                android:layout_below="@+id/tvtVChosenPay"
+                android:layout_marginTop="23dp"
+                android:fontFamily="casual"
+                android:text="Change" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="0.25"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/tvtVChosenPay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvtVChosenPay"
+                android:layout_alignBottom="@+id/tvtVChosenPay"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="37dp"
+                android:layout_marginStart="37dp"
+                android:text="Shipping Cost:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvtVChosenPay"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="33dp"
+                android:layout_marginRight="33dp"
+                android:layout_marginTop="25dp"
+                android:text="$$$$"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="0.25"
+            android:background="@color/textColorPrimary">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvtVChosenPay"
+                android:layout_alignBottom="@+id/tvtVChosenPay"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="37dp"
+                android:layout_marginStart="37dp"
+                android:text="Total Cost:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvtVChosenPay"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="33dp"
+                android:layout_marginRight="33dp"
+                android:layout_marginTop="25dp"
+                android:text="$$$$"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/tvtVChosenPay"
+                android:layout_alignLeft="@+id/tvtVChosenPay"
+                android:layout_alignRight="@+id/tvtVChosenPay"
+                android:layout_alignStart="@+id/tvtVChosenPay"
+                android:layout_below="@+id/tvtVChosenPay"
+                android:layout_marginTop="23dp"
+                android:fontFamily="casual"
+                android:text="Place Order" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -87,24 +87,25 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
                             // Set title
                             mainTitle.setText(R.string.nav_dress_up);
                             // Load fragment
-                            //mainFragment = new DressUpFragment();
                             loadFragmentByID(0);
                             return true;
                         case R.id.navigation_save_outfit:
                             // Set title
                             mainTitle.setText(R.string.nav_outfit_save);
                             // Load fragment
-                           // mainFragment = new SaveOutfitFragment();
                             loadFragmentByID(6);
                             return true;
                         case R.id.navigation_purchase_outfit:
                             mainTitle.setText(R.string.nav_outfit_purchase);
+                            loadFragmentByID(5);
                             return true;
                         case R.id.navigation_my_wardrobe:
                             mainTitle.setText(R.string.nav_user_wardrobe);
+                            loadFragmentByID(4);
                             return true;
                         case R.id.navigation_me:
                             mainTitle.setText(R.string.nav_user);
+                            loadFragmentByID(3);
                             return true;
                     }
                     return false;

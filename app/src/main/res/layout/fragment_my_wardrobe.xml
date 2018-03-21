@@ -1,13 +1,37 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="significantgravitas.toran.armcompanion.MyWardrobeFragment">
+    tools:context="significantgravitas.toran.armcompanion.DressUpFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="0.5"
+            android:background="@color/colorPrimary"
+            android:fontFamily="casual"
+            android:text="My Outfits"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="0.5"
+            android:background="@color/textColorPrimary"
+            android:fontFamily="casual"
+            android:text="My Wardrobe"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
