@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
         if(getAssignedParentByID(id) == 0){
             dressUpStack.push(id);
         }
-        //TODO: ADD REST OF PARENTS
+        //TODO: IN LATER VERSIONS ADD REST OF PARENTS
     }
 
     private int getIDFromFrag(Fragment frag){
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements  DressUpFragment.
                 }
             }
         }
-        //TODO: ADD FOR OTHER PARENTS
+        //TODO: IN LATER VERSIONS ADD FOR OTHER PARENTS
     }
 
     List<Integer> lastChildren = new ArrayList<>();

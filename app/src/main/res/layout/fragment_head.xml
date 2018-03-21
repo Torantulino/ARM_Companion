@@ -10,7 +10,9 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -63,20 +65,10 @@
                         android:layout_height="fill_parent"
                         android:background="@null"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/heart_ico">
+                        android:src="@drawable/hats_ico">
 
                     </ImageButton>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:clickable="false"
-                        android:text="@string/title_hats"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="18sp">
-
-                    </TextView>
                 </FrameLayout>
 
                 <FrameLayout
@@ -92,20 +84,10 @@
                         android:layout_height="fill_parent"
                         android:background="@null"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/heart_ico">
+                        android:src="@drawable/jewellery_ico">
 
                     </ImageButton>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:clickable="false"
-                        android:text="@string/title_jewelry"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="18sp">
-
-                    </TextView>
                 </FrameLayout>
 
                 <FrameLayout
@@ -121,20 +103,10 @@
                         android:layout_height="fill_parent"
                         android:background="@null"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/heart_ico">
+                        android:src="@drawable/glasses_ico">
 
                     </ImageButton>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:clickable="false"
-                        android:text="@string/title_glasses"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="18sp">
-
-                    </TextView>
                 </FrameLayout>
 
                 <FrameLayout
@@ -150,20 +122,10 @@
                         android:layout_height="fill_parent"
                         android:background="@null"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/heart_ico">
+                        android:src="@drawable/headscarf_ico">
 
                     </ImageButton>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:clickable="false"
-                        android:text="@string/title_headscarfs"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="18sp">
-
-                    </TextView>
                 </FrameLayout>
 
             </GridLayout>

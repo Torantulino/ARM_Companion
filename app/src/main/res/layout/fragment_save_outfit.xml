@@ -11,8 +11,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@color/colorPrimaryDark"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteX="-32dp"
+        tools:layout_editor_absoluteY="-45dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -143,23 +143,8 @@
                                 android:layout_height="fill_parent"
                                 android:adjustViewBounds="true"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/mannequin_ico" />
+                                app:srcCompat="@drawable/barehead_ico" />
 
-                            <ImageView
-                                android:id="@+id/imageView4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/user_ico" />
-
-                            <ImageView
-                                android:id="@+id/imageView2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/heart_ico" />
                         </LinearLayout>
                     </HorizontalScrollView>
 
@@ -213,23 +198,8 @@
                                 android:layout_height="fill_parent"
                                 android:adjustViewBounds="true"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/mannequin_ico" />
+                                app:srcCompat="@drawable/neck_ico" />
 
-                            <ImageView
-                                android:id="@+id/imageView4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/user_ico" />
-
-                            <ImageView
-                                android:id="@+id/imageView2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/heart_ico" />
                         </LinearLayout>
                     </HorizontalScrollView>
 
@@ -282,23 +252,8 @@
                                 android:layout_height="fill_parent"
                                 android:adjustViewBounds="true"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/mannequin_ico" />
+                                app:srcCompat="@drawable/baretorso_ico" />
 
-                            <ImageView
-                                android:id="@+id/imageView4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/user_ico" />
-
-                            <ImageView
-                                android:id="@+id/imageView2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/heart_ico" />
                         </LinearLayout>
                     </HorizontalScrollView>
 
@@ -320,7 +275,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_constraintLeft_creator="1"
                 tools:layout_constraintRight_creator="1"
-                tools:layout_constraintTop_creator="1" >
+                tools:layout_constraintTop_creator="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -351,23 +306,8 @@
                                 android:layout_height="fill_parent"
                                 android:adjustViewBounds="true"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/mannequin_ico" />
+                                app:srcCompat="@drawable/hands_ico" />
 
-                            <ImageView
-                                android:id="@+id/imageView4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/user_ico" />
-
-                            <ImageView
-                                android:id="@+id/imageView2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/heart_ico" />
                         </LinearLayout>
                     </HorizontalScrollView>
 
@@ -389,7 +329,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_constraintLeft_creator="1"
                 tools:layout_constraintRight_creator="1"
-                tools:layout_constraintTop_creator="1" >
+                tools:layout_constraintTop_creator="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -420,23 +360,8 @@
                                 android:layout_height="fill_parent"
                                 android:adjustViewBounds="true"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/mannequin_ico" />
+                                app:srcCompat="@drawable/barewaist_ico" />
 
-                            <ImageView
-                                android:id="@+id/imageView4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/user_ico" />
-
-                            <ImageView
-                                android:id="@+id/imageView2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/heart_ico" />
                         </LinearLayout>
                     </HorizontalScrollView>
 
@@ -458,7 +383,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_constraintLeft_creator="1"
                 tools:layout_constraintRight_creator="1"
-                tools:layout_constraintTop_creator="1" >
+                tools:layout_constraintTop_creator="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -484,28 +409,12 @@
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:id="@+id/imageView3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/mannequin_ico" />
-
-                            <ImageView
-                                android:id="@+id/imageView4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/user_ico" />
-
-                            <ImageView
                                 android:id="@+id/imageView2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:adjustViewBounds="true"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/heart_ico" />
+                                app:srcCompat="@drawable/barelegs_ico" />
                         </LinearLayout>
                     </HorizontalScrollView>
 
@@ -527,7 +436,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_constraintLeft_creator="1"
                 tools:layout_constraintRight_creator="1"
-                tools:layout_constraintTop_creator="1" >
+                tools:layout_constraintTop_creator="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -558,23 +467,8 @@
                                 android:layout_height="fill_parent"
                                 android:adjustViewBounds="true"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/mannequin_ico" />
+                                app:srcCompat="@drawable/barefoot_ico" />
 
-                            <ImageView
-                                android:id="@+id/imageView4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/user_ico" />
-
-                            <ImageView
-                                android:id="@+id/imageView2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/heart_ico" />
                         </LinearLayout>
                     </HorizontalScrollView>
 

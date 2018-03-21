@@ -29,7 +29,7 @@
                     android:layout_height="fill_parent"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/mannequin_ico" />
+                    app:srcCompat="@drawable/specs_ico" />
 
                 <ImageView
                     android:id="@+id/imageView4"
@@ -37,7 +37,7 @@
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/user_ico" />
+                    app:srcCompat="@drawable/sunglasses_ico" />
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -45,7 +45,7 @@
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/heart_ico" />
+                    app:srcCompat="@drawable/glasses_ico" />
             </LinearLayout>
         </HorizontalScrollView>
 
